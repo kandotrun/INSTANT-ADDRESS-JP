@@ -1,22 +1,3 @@
-* 郵便番号データ
-
-    * 日本郵便公式CSVを1日1回GitHub Actionsで取得
-    * Actions内でJSONに変換してリポジトリにコミット
-* バリデーション
-
-    * zod
-* デプロイ
-
-    * Next.js 14 App Router + Vercel
-* UIデザイン
-
-    * Mobile UI, Brutalist Minimalism
-    * モノクロ、太字サンセリフ、角丸なし、グリッドライン強調
-
-として書き直しています。
-
----
-
 # 1. サービス概要書
 
 ## 1.1 サービス名（仮）
@@ -496,4 +477,3 @@ public/
     * BrutalistなUI調整
     * リアルタイム変換の細かいUX
 
-という順番で組んでいくと進めやすいと思います。

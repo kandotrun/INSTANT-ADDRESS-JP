@@ -2,22 +2,20 @@
 
 ## プロジェクト構成
 
-- Next.js 14 App Router + TypeScript。Mobile first Brutalist UI。
-- app/ にページと layout。server components 優先、client 必須箇所のみ。
-- src/components に UI、src/lib に純粋ロジック、src/schemas に zod スキーマ。
-- public/postal/ に prefix-xxx.json を 3 桁ごとに配置。例: prefix-100.json。
-- scripts/postal/ に CSV 取得・変換スクリプト。.github/workflows/postal.yml で毎日実行。
-- tests/ または app/**/__tests__ にテストを隣接配置。
+- Next.js 15 App Router + TypeScript。Mobile first Brutalist UI。
+- web/app にページと layout。server components 優先、client 必須箇所のみ。
+- web/src/components に UI、web/src/lib に純粋ロジック、web/src/schemas に zod スキーマ。
+- web/public/postal/ に prefix-xxx.json を 3 桁ごとに配置。例: prefix-100.json。
+- tools/scripts/postal/ に CSV 取得・変換スクリプト。.github/workflows/postal.yml で毎日実行。
+- tests は web/app/**/__tests__ など隣接配置を基本。
 
 ## セットアップ・開発コマンド
 
-- Node 20 推奨。パッケージマネージャは bun で統一。
-- bun install: 依存インストール。
-- bun dev: 開発サーバー。Brutalist スタイルの見え方を随時確認。
-- bun build: 本番ビルド。
-- bun start: ローカル本番確認。
-- bun lint: ESLint + Prettier。フォーマット崩れと型逸脱を検出。
-- bun test: 単体テスト。E2E 追加時は bun x playwright test を想定。
+- Node 24 推奨。パッケージマネージャは bun で統一。
+- データツール: `cd tools && bun install` / `bun run fetch-postal`。
+- フロント: `cd web && bun install` / `bun dev` / `bun build` / `bun start`。
+- lint/format: `cd web && bun lint`、`bun format`（biome）。
+- テスト: `cd web && bun test`（追加時）。E2E は bun x playwright test を想定。
 
 ## コーディング規約
 

@@ -4,6 +4,6 @@
 		"lineWidth": 100
 	},
 	"files": {
-		"ignore": ["public/", "tools/node_modules/"]
+		"ignore": ["public/", "tools/node_modules/", "web/.next/", "web/.turbo/", "web/node_modules/"]
 	}
 }

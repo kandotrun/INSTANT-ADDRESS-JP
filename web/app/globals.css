@@ -1,0 +1,266 @@
+:root {
+	--bg: #ffffff;
+	--fg: #111827;
+	--fg-sub: #6b7280;
+	--border: #e5e7eb;
+	--accent: #2563eb;
+	--font-heading: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+	--font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	background: var(--bg);
+	color: var(--fg);
+	font-family: var(--font-body);
+}
+
+.container {
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 16px;
+	width: 100%;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+main {
+	min-height: 100vh;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+}
+
+header,
+footer {
+	position: sticky;
+	z-index: 10;
+	background: var(--bg);
+	border-bottom: 1px solid var(--border);
+	padding: 12px 0;
+}
+
+header {
+	top: 0;
+}
+
+footer {
+	bottom: 0;
+}
+
+section {
+	border: 1px solid var(--border);
+}
+
+h1,
+h2,
+h3,
+h4 {
+	font-family: var(--font-heading);
+	letter-spacing: 0.06em;
+	margin: 0;
+}
+
+label {
+	font-size: 12px;
+	font-weight: 800;
+	letter-spacing: 0.08em;
+}
+
+input,
+textarea,
+button {
+	font: inherit;
+	background: var(--bg);
+	color: var(--fg);
+	outline: none;
+}
+
+input:focus,
+textarea:focus,
+button:focus {
+	outline: 2px solid var(--border);
+	outline-offset: 2px;
+}
+
+.button-ghost {
+	border: 1px solid var(--border);
+	padding: 8px 12px;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	cursor: pointer;
+	border-radius: 8px;
+	background: #ffffff;
+	transition: background 0.12s ease, border-color 0.12s ease;
+}
+
+.sh-input,
+.sh-textarea {
+	width: 100%;
+	border: 1px solid var(--border);
+	background: #ffffff;
+	color: var(--fg);
+	border-radius: 8px;
+	padding: 10px 12px;
+	transition: border-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+.sh-textarea {
+	min-height: 120px;
+	resize: vertical;
+}
+
+.sh-input:focus,
+.sh-textarea:focus {
+	border-color: var(--accent);
+	box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+	outline: none;
+}
+
+.button-ghost:hover {
+	background: #f4f4f5;
+	border-color: #d1d5db;
+}
+
+.grid-two {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 12px;
+}
+
+.grid-three {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 8px;
+}
+
+.surface {
+	border: 1px solid var(--border);
+	padding: 12px;
+	border-radius: 10px;
+	background: #ffffff;
+}
+
+.panel {
+	border: 1px solid var(--border);
+	padding: 12px;
+	display: grid;
+	gap: 12px;
+	border-radius: 12px;
+	box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+}
+
+.row-split {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 8px;
+}
+
+.row-split .mono-block {
+	font-size: 16px;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+}
+
+.row-split .muted {
+	font-size: 11px;
+}
+
+.muted {
+	color: var(--fg-sub);
+	letter-spacing: 0.06em;
+	font-weight: 700;
+	font-size: 12px;
+}
+
+.toast {
+	position: fixed;
+	bottom: 24px;
+	right: 24px;
+	background: var(--fg);
+	color: var(--bg);
+	padding: 10px 12px;
+	border: 2px solid var(--border);
+	font-weight: 800;
+	letter-spacing: 0.06em;
+	z-index: 30;
+}
+
+.mono-block {
+	font-family: var(--font-heading);
+	font-size: 18px;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+}
+
+.result-block {
+	display: grid;
+	gap: 8px;
+}
+
+.result-row {
+	display: flex;
+	justify-content: space-between;
+	gap: 12px;
+	border: 1px solid var(--border);
+	padding: 8px;
+	align-items: flex-start;
+	word-break: break-word;
+	overflow-wrap: break-word;
+}
+
+.result-row-stack {
+	display: grid;
+	gap: 6px;
+	border: 1px solid var(--border);
+	padding: 8px;
+	word-break: break-word;
+	overflow-wrap: break-word;
+}
+
+.copy-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+	gap: 8px;
+}
+
+.copy-cell {
+	border: 1px solid var(--border);
+	padding: 10px;
+	display: grid;
+	gap: 6px;
+	word-break: break-word;
+	overflow-wrap: break-word;
+}
+
+.copy-head {
+	font-size: 12px;
+	font-weight: 800;
+	letter-spacing: 0.08em;
+}
+
+.alert {
+	color: var(--accent);
+	font-weight: 800;
+	letter-spacing: 0.06em;
+}
+
+@media (max-width: 768px) {
+	header,
+	footer {
+		padding: 10px;
+	}
+
+	.grid-two {
+		grid-template-columns: 1fr;
+	}
+}

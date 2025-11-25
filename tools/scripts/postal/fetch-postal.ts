@@ -9,7 +9,7 @@ import { z } from "zod";
 const JA_URL = "https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip";
 const ROME_URL = "https://www.post.japanpost.jp/zipcode/dl/roman/KEN_ALL_ROME.zip";
 const repoRoot = resolve(fileURLToPath(new URL("../../..", import.meta.url)));
-const OUTPUT_DIR = join(repoRoot, "public", "postal");
+const OUTPUT_DIR = join(repoRoot, "web", "public", "postal");
 
 type JaRecord = {
 	prefectureJa: string;
