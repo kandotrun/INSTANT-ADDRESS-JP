@@ -53,6 +53,7 @@ export function AddressClient() {
 	const [toast, setToast] = useState<string>("");
 	const latestZip = useRef("");
 	const toastTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+	const lastErrorToast = useRef<string>("");
 
 	const copyText = async (value: string, label: string) => {
 		if (typeof navigator === "undefined" || !navigator.clipboard) {
@@ -68,11 +69,35 @@ export function AddressClient() {
 		}, 1800);
 	};
 
+	const showToast = (message: string) => {
+		if (!message || message === toast) {
+			return;
+		}
+		if (toastTimer.current) {
+			clearTimeout(toastTimer.current);
+		}
+		setToast(message);
+		toastTimer.current = setTimeout(() => setToast(""), 2200);
+	};
+
+	const showValidationToast = (errs: FieldErrors) => {
+		const first = errs.zip ?? errs.street ?? errs.building ?? errs.phone;
+		if (first && first !== lastErrorToast.current) {
+			lastErrorToast.current = first;
+			showToast(first);
+		}
+		if (!first) {
+			lastErrorToast.current = "";
+		}
+	};
+
 	const handleZipChange = async (value: string) => {
 		const zip = sanitizeZip(value);
 		const nextForm = { ...form, zip };
 		setForm(nextForm);
-		setErrors(buildErrors(nextForm));
+		const nextErrors = buildErrors(nextForm);
+		setErrors(nextErrors);
+		showValidationToast(nextErrors);
 		latestZip.current = zip;
 		if (zip.length < 3) {
 			setEntry(undefined);
@@ -93,6 +118,7 @@ export function AddressClient() {
 			if (!result) {
 				setEntry(undefined);
 				setStatus("notfound");
+				showToast("該当の郵便番号が見つかりませんでした");
 				return;
 			}
 			setEntry(result);
@@ -100,6 +126,7 @@ export function AddressClient() {
 		} catch (error) {
 			setEntry(undefined);
 			setStatus("error");
+			showToast("データ取得に失敗しました");
 		}
 	};
 
@@ -107,21 +134,27 @@ export function AddressClient() {
 		const street = sanitizeStreet(value);
 		const nextForm = { ...form, street };
 		setForm(nextForm);
-		setErrors(buildErrors(nextForm));
+		const nextErrors = buildErrors(nextForm);
+		setErrors(nextErrors);
+		showValidationToast(nextErrors);
 	};
 
 	const handleBuildingChange = (value: string) => {
 		const building = sanitizeBuilding(value);
 		const nextForm = { ...form, building };
 		setForm(nextForm);
-		setErrors(buildErrors(nextForm));
+		const nextErrors = buildErrors(nextForm);
+		setErrors(nextErrors);
+		showValidationToast(nextErrors);
 	};
 
 	const handlePhoneChange = (value: string) => {
 		const phone = sanitizePhone(value);
 		const nextForm = { ...form, phone };
 		setForm(nextForm);
-		setErrors(buildErrors(nextForm));
+		const nextErrors = buildErrors(nextForm);
+		setErrors(nextErrors);
+		showValidationToast(nextErrors);
 	};
 
 	const composed = useMemo(() => {
@@ -150,10 +183,7 @@ export function AddressClient() {
 							onChange={(e) => handleZipChange(e.target.value)}
 							placeholder="1008111"
 						/>
-						{errors.zip ? <span className="alert">{errors.zip}</span> : null}
-						{status === "loading" ? <span>LOADING...</span> : null}
-						{status === "notfound" ? <span className="alert">NOT FOUND</span> : null}
-						{status === "error" ? <span className="alert">ERROR</span> : null}
+					{status === "loading" ? <span className="muted">読み込み中...</span> : null}
 					</div>
 					<div className="surface" style={{ display: "grid", gap: 6 }}>
 						<label htmlFor="street">番地</label>

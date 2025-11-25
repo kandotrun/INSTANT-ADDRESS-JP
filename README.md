@@ -4,7 +4,6 @@
 
 ## 特徴
 - Next.js 15 (App Router) / TypeScript を前提に設計
-- Brutalist Minimalism のモノクロUI
 - 住所マスタは GitHub Actions で日次更新し、ランタイムは静的JSONのみ参照
 - zod でデータを検証し、不正なエントリを除外
 
