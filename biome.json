@@ -1,0 +1,9 @@
+{
+	"$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+	"formatter": {
+		"lineWidth": 100
+	},
+	"files": {
+		"ignore": ["public/", "tools/node_modules/"]
+	}
+}
