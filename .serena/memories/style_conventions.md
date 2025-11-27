@@ -1,0 +1,8 @@
+- TypeScript strict; forbid `any`.
+- Prefer React server components; avoid useEffect unless necessary; side effects in custom hooks.
+- Components PascalCase; files kebab-case; named exports.
+- Strings as template literals; extract magic numbers to const.
+- No comments unless essential; follow existing import/style patterns.
+- No border radius; monochrome, bold sans-serif; 1px borders; sticky header/footer; brutalist mobile-first.
+- Use zod schemas in web/src/schemas for validation; reuse across API/forms.
+- Indent 2 spaces; semicolons required.

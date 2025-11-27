@@ -1,0 +1,10 @@
+- Install deps (tools): cd tools && bun install
+- Install deps (web): cd web && bun install
+- Dev server: cd web && bun dev
+- Build: cd web && bun build
+- Start prod: cd web && bun start
+- Lint: cd web && bun lint
+- Format: cd web && bun format
+- Tests: cd web && bun test (if present); E2E: bun x playwright test
+- Data fetch: cd tools && bun run fetch-postal
+- CI workflow: .github/workflows/postal.yml triggered daily 00:30 JST or manually

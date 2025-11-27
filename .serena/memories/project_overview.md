@@ -1,0 +1,5 @@
+- Purpose: web app converting Japanese addresses to English in real time; delivers static JSON address data generated daily from Japan Post CSV.
+- Stack: Next.js 15 App Router + TypeScript, bun package manager/runtime; zod for validation; GitHub Actions updates postal JSON.
+- Structure: web/ (Next.js app, app router pages, components, lib, schemas, public/postal generated); tools/scripts/postal/ for CSV fetch/convert; .github/workflows/postal.yml automates nightly data update.
+- UI: mobile-first brutalist, monochrome, bold sans-serif, square corners, 1px borders, sticky header/footer.
+- Package manager: bun only.

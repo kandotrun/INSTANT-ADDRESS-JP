@@ -1,0 +1,4 @@
+- Before finishing: run lint/format/tests for touched areas (bun lint, bun format, bun test).
+- Follow Conventional Commits; 1 commit per intent; avoid amending unless requested.
+- For PRs: include summary, test results, screenshots for UI, related issue; require review and green CI; use gh command for PR/issue operations.
+- Keep .env.local secrets untracked; configure production secrets in Vercel dashboard.
